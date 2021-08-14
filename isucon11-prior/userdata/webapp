@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends git itamae
+
+GITDIR="${HOME}/isucon11-prior"
+sudo rm -rf ${GITDIR}
+git clone -b matsuu-fix https://github.com/matsuu/isucon11-prior.git ${GITDIR}
+(
+  cd ${GITDIR}/infra/instance
+  openssl x509 -in <(openssl req -subj '/CN=localhost' -nodes -newkey rsa:2048 -keyout cookbooks/nginx/files/usr/local/ssl/privkey.pem) -req -signkey cookbooks/nginx/files/usr/local/ssl/privkey.pem -sha256 -days 3650 -out cookbooks/nginx/files/usr/local/ssl/fullchain.pem -extfile <(echo -e "basicConstraints=critical,CA:true,pathlen:0\nsubjectAltName=DNS.1:localhost,IP.1:127.0.0.1")
+  sudo itamae local recipe.rb
+)
+sudo rm -rf ${GITDIR}
+
+sudo iptables -I INPUT 6 -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT 7 -p tcp -m state --state NEW -m tcp --dport 443 -j ACCEPT
+sudo iptables-save | sudo tee /etc/iptables/rules.v4

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends ansible git
+
+GITDIR="${HOME}/isucon10-qualify"
+sudo rm -rf ${GITDIR}
+git clone -b ubuntu-20.04-aarch64 https://github.com/matsuu/isucon10-qualify.git ${GITDIR}
+(
+  cd ${GITDIR}/provisioning/ansible
+  PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i competitor, --connection=local competitor.yaml
+)
+sudo rm -rf ${GITDIR}
+
+sudo iptables -I INPUT 6 -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+sudo iptables-save | sudo tee /etc/iptables/rules.v4
+
+sudo rm -rf /home/ubuntu/.ansible /home/isucon/.ansible

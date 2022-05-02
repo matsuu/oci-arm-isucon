@@ -1,6 +1,6 @@
 # oci-arm-isucon/isucon11-qualify
 
-[Oracle Cloud Infrastructure](https://www.oracle.com/jp/cloud/)の[Always Free Cloud Services](https://www.oracle.com/jp/cloud/free/)枠を利用してISUCON 事前講習2021に似た環境を構築するためのTerraformです。
+[Oracle Cloud Infrastructure](https://www.oracle.com/jp/cloud/)の[Always Free Cloud Services](https://www.oracle.com/jp/cloud/free/)枠を利用してISUCON11予選に似た環境を構築するためのTerraformです。
 
 ## 使い方
 

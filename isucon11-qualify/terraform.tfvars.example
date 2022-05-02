@@ -1,0 +1,15 @@
+# テナンシ(ルート・コンパートメント)のOCID
+tenancy_ocid = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# ユーザー情報のOCID
+user_ocid = "ocid1.user.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# APIキー
+fingerprint      = "01:23:45:67:89:ab:cd:ef:01:23:45:67:89:ab:cd:ef"
+private_key_path = "/your/api/key.pem"
+
+# リージョン識別子 (ap-tokyo-1, ap-osaka-1, 他)
+region = "ap-tokyo-1"
+
+# SSH公開鍵
+ssh_authorized_keys = "ssh-rsa AAA....."

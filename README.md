@@ -4,6 +4,7 @@
 
 * [ISUCON10予選](https://github.com/matsuu/oci-arm-isucon/tree/main/isucon10-qualify)
 * [ISUCON 事前講習2021](https://github.com/matsuu/oci-arm-isucon/tree/main/isucon11-prior)
+* [ISUCON11予選](https://github.com/matsuu/oci-arm-isucon/tree/main/isucon11-qualify)
 
 ## License
 

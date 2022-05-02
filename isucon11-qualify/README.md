@@ -14,6 +14,7 @@
     ```
 * terraformを実行する
     ```
+    terraform init
     terraform plan
     terraform apply
     ```
